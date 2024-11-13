@@ -1,1 +1,1 @@
-comandos del punto A:
+Punto A:
