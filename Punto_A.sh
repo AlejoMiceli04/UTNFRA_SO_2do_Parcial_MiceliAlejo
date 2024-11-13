@@ -1,1 +1,1 @@
-Modificacion del punto A: 
+comandos del punto A:
