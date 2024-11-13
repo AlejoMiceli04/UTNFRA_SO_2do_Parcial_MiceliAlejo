@@ -1,1 +1,1 @@
-Comandos del punto B: 
+Punto B: 
