@@ -1,0 +1,29 @@
+ debug:
+    msg: "Tareas del 2do Parcial"
+
+  - name: "Crear directorios en /tmp/2do_parcial/"
+    file:
+      path: "/tmp/2do_parcial/{{ item }}"
+      mode: '0775'
+      recurse: yes
+    with_items:
+      - "alumno"
+      - "equipo"
+
+  - name: "Add files from template"
+    template:
+      src: template_01.j2
+      dest: /tmp/2do_parcial/alumno/datos_alumno.txt
+
+  - name: "Add another file from template"
+    template:
+      src: template_02.j2
+      dest: /tmp/2do_parcial/equipo/datos_equipo.txt
+
+  - name: "add NOPASSWD in sudores for 2PSupervisores"
+    become: yes
+    lineinfile:
+      path: /etc/sudoers
+      state: present
+      line: '%2PSupervisores ALL=(ALL) NOPASSWD: ALL'
+      validate: 'visudo -cf %s'

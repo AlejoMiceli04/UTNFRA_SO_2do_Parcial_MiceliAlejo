@@ -1,0 +1,333 @@
+2024-06-24 18:08:06,499 p=3444395 u=upszot n=ansible | [WARNING]: A duplicate localhost-like entry was found (localhost). First found localhost was 127.0.0.1
+
+2024-06-24 18:08:06,598 p=3444395 u=upszot n=ansible | PLAY [all] **********************************************************************************************************************************************************************************************************************************
+2024-06-24 18:08:06,609 p=3444395 u=upszot n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2024-06-24 18:08:07,746 p=3444395 u=upszot n=ansible | ok: [localhost]
+2024-06-24 18:08:07,775 p=3444395 u=upszot n=ansible | TASK [include_role : 2do_parcial] ***********************************************************************************************************************************************************************************************************
+2024-06-24 18:08:07,805 p=3444395 u=upszot n=ansible | TASK [2do_parcial : debug] ******************************************************************************************************************************************************************************************************************
+2024-06-24 18:08:07,817 p=3444395 u=upszot n=ansible | ok: [localhost] => {
+    "msg": "Tareas del 2do Parcial"
+}
+2024-06-24 18:08:07,836 p=3444395 u=upszot n=ansible | TASK [Otra tarea] ***************************************************************************************************************************************************************************************************************************
+2024-06-24 18:08:07,851 p=3444395 u=upszot n=ansible | ok: [localhost] => {
+    "msg": "Despues de la ejecucion del rol"
+}
+2024-06-24 18:08:07,885 p=3444395 u=upszot n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2024-06-24 18:08:07,885 p=3444395 u=upszot n=ansible | localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2024-11-15 01:49:00,900 p=10141 u=miceli n=ansible | ERROR! the playbook: playbook.yaml could not be found
+2024-11-15 01:49:17,029 p=10143 u=miceli n=ansible | ERROR! the playbook: main.yml could not be found
+2024-11-15 01:50:11,625 p=10148 u=miceli n=ansible | [WARNING]: A duplicate localhost-like entry was found (localhost). First found localhost was 127.0.0.1
+
+2024-11-15 01:50:11,869 p=10148 u=miceli n=ansible | PLAY [all] ************************************************************************************************************************************************
+2024-11-15 01:50:11,882 p=10148 u=miceli n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************
+2024-11-15 01:50:11,973 p=10148 u=miceli n=ansible | fatal: [127.0.0.1]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '127.0.0.1' (ED25519) to the list of known hosts.\r\nmiceli@127.0.0.1: Permission denied (publickey).", "unreachable": true}
+2024-11-15 01:50:13,119 p=10148 u=miceli n=ansible | [WARNING]: Platform linux on host localhost is using the discovered Python interpreter at /usr/bin/python3.10, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.17/reference_appendices/interpreter_discovery.html for more
+information.
+
+2024-11-15 01:50:13,120 p=10148 u=miceli n=ansible | ok: [localhost]
+2024-11-15 01:50:13,126 p=10148 u=miceli n=ansible | TASK [include_role : 2do_parcial] *************************************************************************************************************************
+2024-11-15 01:50:13,141 p=10148 u=miceli n=ansible | included: 2do_parcial for localhost
+2024-11-15 01:50:13,147 p=10148 u=miceli n=ansible | TASK [2do_parcial : debug] ********************************************************************************************************************************
+2024-11-15 01:50:13,165 p=10148 u=miceli n=ansible | ok: [localhost] => {
+    "msg": [
+        {
+            "name": "archivo con template para alumno",
+            "template": {
+                "dest": "/tmp/2do_parcial/alumno/datos_alumno.txt",
+                "src": "template_01.j2"
+            }
+        },
+        {
+            "name": "Agrego otro archivo para equipo",
+            "template": {
+                "dest": "/tmp/2do_parcial/equipo/datos_equipo.txt",
+                "src": "template_02.j2"
+            }
+        },
+        {
+            "become": true,
+            "lineinfile": {
+                "line": "%2PSupervisores ALL=(ALL) NOPASSWD: ALL",
+                "path": "/etc/sudoers",
+                "state": "present",
+                "validate": "visudo -cf %s"
+            },
+            "name": "modifico grupos para que no me pida contraseña"
+        },
+        {
+            "name": "template para crear los directorios de alumno/equipo",
+            "template": {
+                "dest": "/tmp/2do_parcial/",
+                "src": "template_03.j2"
+            }
+        }
+    ]
+}
+2024-11-15 01:50:13,174 p=10148 u=miceli n=ansible | TASK [Otra tarea] *****************************************************************************************************************************************
+2024-11-15 01:50:13,183 p=10148 u=miceli n=ansible | ok: [localhost] => {
+    "msg": "Despues de la ejecucion del rol"
+}
+2024-11-15 01:50:13,184 p=10148 u=miceli n=ansible | PLAY RECAP ************************************************************************************************************************************************
+2024-11-15 01:50:13,184 p=10148 u=miceli n=ansible | 127.0.0.1                  : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2024-11-15 01:50:13,185 p=10148 u=miceli n=ansible | localhost                  : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2024-11-15 01:57:14,862 p=10338 u=root n=ansible | [WARNING]: A duplicate localhost-like entry was found (localhost). First found localhost was 127.0.0.1
+
+2024-11-15 01:57:14,952 p=10338 u=root n=ansible | PLAY [all] ***********************************************************************************************************************************
+2024-11-15 01:57:14,958 p=10338 u=root n=ansible | TASK [Gathering Facts] ***********************************************************************************************************************
+2024-11-15 01:57:15,157 p=10338 u=root n=ansible | fatal: [127.0.0.1]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '127.0.0.1' (ED25519) to the list of known hosts.\r\nroot@127.0.0.1: Permission denied (publickey).", "unreachable": true}
+2024-11-15 01:57:16,180 p=10338 u=root n=ansible | [WARNING]: Platform linux on host localhost is using the discovered Python interpreter at /usr/bin/python3.10, but future installation of
+another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.17/reference_appendices/interpreter_discovery.html for more information.
+
+2024-11-15 01:57:16,181 p=10338 u=root n=ansible | ok: [localhost]
+2024-11-15 01:57:16,187 p=10338 u=root n=ansible | TASK [include_role : 2do_parcial] ************************************************************************************************************
+2024-11-15 01:57:16,205 p=10338 u=root n=ansible | included: 2do_parcial for localhost
+2024-11-15 01:57:16,210 p=10338 u=root n=ansible | TASK [2do_parcial : debug] *******************************************************************************************************************
+2024-11-15 01:57:16,225 p=10338 u=root n=ansible | ok: [localhost] => {
+    "msg": [
+        {
+            "name": "archivo con template para alumno",
+            "template": {
+                "dest": "/tmp/2do_parcial/alumno/datos_alumno.txt",
+                "src": "template_01.j2"
+            }
+        },
+        {
+            "name": "Agrego otro archivo para equipo",
+            "template": {
+                "dest": "/tmp/2do_parcial/equipo/datos_equipo.txt",
+                "src": "template_02.j2"
+            }
+        },
+        {
+            "become": true,
+            "lineinfile": {
+                "line": "%2PSupervisores ALL=(ALL) NOPASSWD: ALL",
+                "path": "/etc/sudoers",
+                "state": "present",
+                "validate": "visudo -cf %s"
+            },
+            "name": "modifico grupos para que no me pida contraseña"
+        },
+        {
+            "name": "template para crear los directorios de alumno/equipo",
+            "template": {
+                "dest": "/tmp/2do_parcial/",
+                "src": "template_03.j2"
+            }
+        }
+    ]
+}
+2024-11-15 01:57:16,235 p=10338 u=root n=ansible | TASK [Otra tarea] ****************************************************************************************************************************
+2024-11-15 01:57:16,245 p=10338 u=root n=ansible | ok: [localhost] => {
+    "msg": "Despues de la ejecucion del rol"
+}
+2024-11-15 01:57:16,248 p=10338 u=root n=ansible | PLAY RECAP ***********************************************************************************************************************************
+2024-11-15 01:57:16,249 p=10338 u=root n=ansible | 127.0.0.1                  : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2024-11-15 01:57:16,250 p=10338 u=root n=ansible | localhost                  : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2024-11-15 02:00:08,095 p=10490 u=root n=ansible | [WARNING]: A duplicate localhost-like entry was found (localhost). First found localhost was 127.0.0.1
+
+2024-11-15 02:00:08,194 p=10490 u=root n=ansible | PLAY [all] ***************************************************************************************************************************************************
+2024-11-15 02:00:08,201 p=10490 u=root n=ansible | TASK [Gathering Facts] ***************************************************************************************************************************************
+2024-11-15 02:00:08,297 p=10490 u=root n=ansible | fatal: [127.0.0.1]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '127.0.0.1' (ED25519) to the list of known hosts.\r\nroot@127.0.0.1: Permission denied (publickey).", "unreachable": true}
+2024-11-15 02:00:09,311 p=10490 u=root n=ansible | [WARNING]: Platform linux on host localhost is using the discovered Python interpreter at /usr/bin/python3.10, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.17/reference_appendices/interpreter_discovery.html for more
+information.
+
+2024-11-15 02:00:09,311 p=10490 u=root n=ansible | ok: [localhost]
+2024-11-15 02:00:09,317 p=10490 u=root n=ansible | TASK [include_role : 2do_parcial] ****************************************************************************************************************************
+2024-11-15 02:00:09,334 p=10490 u=root n=ansible | included: 2do_parcial for localhost
+2024-11-15 02:00:09,338 p=10490 u=root n=ansible | TASK [2do_parcial : debug] ***********************************************************************************************************************************
+2024-11-15 02:00:09,352 p=10490 u=root n=ansible | ok: [localhost] => {
+    "msg": [
+        {
+            "name": "archivo con template para alumno",
+            "template": {
+                "dest": "/tmp/2do_parcial/alumno/datos_alumno.txt",
+                "src": "template_01.j2"
+            }
+        },
+        {
+            "name": "Agrego otro archivo para equipo",
+            "template": {
+                "dest": "/tmp/2do_parcial/equipo/datos_equipo.txt",
+                "src": "template_02.j2"
+            }
+        },
+        {
+            "become": true,
+            "lineinfile": {
+                "line": "%2PSupervisores ALL=(ALL) NOPASSWD: ALL",
+                "path": "/etc/sudoers",
+                "state": "present",
+                "validate": "visudo -cf %s"
+            },
+            "name": "modifico grupos para que no me pida contraseña"
+        },
+        {
+            "name": "template para crear los directorios de alumno/equipo",
+            "template": {
+                "dest": "/tmp/2do_parcial/",
+                "src": "template_03.j2"
+            }
+        }
+    ]
+}
+2024-11-15 02:00:09,361 p=10490 u=root n=ansible | TASK [Otra tarea] ********************************************************************************************************************************************
+2024-11-15 02:00:09,371 p=10490 u=root n=ansible | ok: [localhost] => {
+    "msg": "Despues de la ejecucion del rol"
+}
+2024-11-15 02:00:09,372 p=10490 u=root n=ansible | PLAY RECAP ***************************************************************************************************************************************************
+2024-11-15 02:00:09,373 p=10490 u=root n=ansible | 127.0.0.1                  : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2024-11-15 02:00:09,373 p=10490 u=root n=ansible | localhost                  : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2024-11-15 02:03:06,577 p=10623 u=root n=ansible | ERROR! the playbook: /roles/2do_parcial/main.yml could not be found
+2024-11-15 02:03:50,512 p=10634 u=root n=ansible | ERROR! the playbook: /roles/2do_parcial/tasks/main.yml could not be found
+2024-11-15 02:03:55,195 p=10638 u=root n=ansible | ERROR! the playbook: /roles/2do_parcial/tasks/main.yml/ could not be found
+2024-11-15 02:09:44,004 p=10671 u=root n=ansible | [WARNING]: A duplicate localhost-like entry was found (localhost). First found localhost was 127.0.0.1
+
+2024-11-15 02:09:44,091 p=10671 u=root n=ansible | PLAY [all] ****************************************************************************************************************************
+2024-11-15 02:09:44,098 p=10671 u=root n=ansible | TASK [Gathering Facts] ****************************************************************************************************************
+2024-11-15 02:09:44,286 p=10671 u=root n=ansible | fatal: [127.0.0.1]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '127.0.0.1' (ED25519) to the list of known hosts.\r\nroot@127.0.0.1: Permission denied (publickey).", "unreachable": true}
+2024-11-15 02:09:45,233 p=10671 u=root n=ansible | [WARNING]: Platform linux on host localhost is using the discovered Python interpreter at /usr/bin/python3.10, but future installation
+of another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.17/reference_appendices/interpreter_discovery.html for more information.
+
+2024-11-15 02:09:45,233 p=10671 u=root n=ansible | ok: [localhost]
+2024-11-15 02:09:45,238 p=10671 u=root n=ansible | TASK [include_role : 2do_parcial] *****************************************************************************************************
+2024-11-15 02:09:45,253 p=10671 u=root n=ansible | included: 2do_parcial for localhost
+2024-11-15 02:09:45,258 p=10671 u=root n=ansible | TASK [2do_parcial : debug] ************************************************************************************************************
+2024-11-15 02:09:45,269 p=10671 u=root n=ansible | ok: [localhost] => {
+    "msg": [
+        {
+            "name": "archivo con template para alumno",
+            "template": {
+                "dest": "/tmp/2do_parcial/alumno/datos_alumno.txt",
+                "force": true,
+                "src": "template_01.j2"
+            }
+        },
+        {
+            "name": "Agrego otro archivo para equipo",
+            "template": {
+                "dest": "/tmp/2do_parcial/equipo/datos_equipo.txt",
+                "force": true,
+                "src": "template_02.j2"
+            }
+        },
+        {
+            "become": true,
+            "lineinfile": {
+                "line": "%2PSupervisores ALL=(ALL) NOPASSWD: ALL",
+                "path": "/etc/sudoers",
+                "state": "present",
+                "validate": "visudo -cf %s"
+            },
+            "name": "modifico grupos para que no me pida contraseña"
+        },
+        {
+            "name": "template para crear los directorios de alumno/equipo",
+            "template": {
+                "dest": "/tmp/2do_parcial/",
+                "src": "template_03.j2"
+            }
+        }
+    ]
+}
+2024-11-15 02:09:45,279 p=10671 u=root n=ansible | TASK [Otra tarea] *********************************************************************************************************************
+2024-11-15 02:09:45,289 p=10671 u=root n=ansible | ok: [localhost] => {
+    "msg": "Despues de la ejecucion del rol"
+}
+2024-11-15 02:09:45,290 p=10671 u=root n=ansible | PLAY RECAP ****************************************************************************************************************************
+2024-11-15 02:09:45,290 p=10671 u=root n=ansible | 127.0.0.1                  : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2024-11-15 02:09:45,290 p=10671 u=root n=ansible | localhost                  : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2024-11-15 02:18:11,899 p=10811 u=root n=ansible | [WARNING]: A duplicate localhost-like entry was found (localhost). First found localhost was 127.0.0.1
+
+2024-11-15 02:18:11,982 p=10811 u=root n=ansible | PLAY [all] ****************************************************************************************************************************
+2024-11-15 02:18:11,988 p=10811 u=root n=ansible | TASK [Gathering Facts] ****************************************************************************************************************
+2024-11-15 02:18:12,180 p=10811 u=root n=ansible | fatal: [127.0.0.1]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '127.0.0.1' (ED25519) to the list of known hosts.\r\nroot@127.0.0.1: Permission denied (publickey).", "unreachable": true}
+2024-11-15 02:18:13,112 p=10811 u=root n=ansible | [WARNING]: Platform linux on host localhost is using the discovered Python interpreter at /usr/bin/python3.10, but future installation
+of another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.17/reference_appendices/interpreter_discovery.html for more information.
+
+2024-11-15 02:18:13,112 p=10811 u=root n=ansible | ok: [localhost]
+2024-11-15 02:18:13,118 p=10811 u=root n=ansible | TASK [include_role : 2do_parcial] *****************************************************************************************************
+2024-11-15 02:18:13,133 p=10811 u=root n=ansible | included: 2do_parcial for localhost
+2024-11-15 02:18:13,138 p=10811 u=root n=ansible | TASK [2do_parcial : debug] ************************************************************************************************************
+2024-11-15 02:18:13,149 p=10811 u=root n=ansible | fatal: [localhost]: FAILED! => {"msg": "The task includes an option with an undefined variable.. 'item' is undefined\n\nThe error appears to be in '/home/miceli/UTN-FRA_SO_Examenes/202406/ansible/roles/2do_parcial/tasks/main.yml': line 4, column 3, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n- debug:\n  ^ here\n"}
+2024-11-15 02:18:13,150 p=10811 u=root n=ansible | PLAY RECAP ****************************************************************************************************************************
+2024-11-15 02:18:13,151 p=10811 u=root n=ansible | 127.0.0.1                  : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2024-11-15 02:18:13,151 p=10811 u=root n=ansible | localhost                  : ok=2    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2024-11-15 02:18:26,967 p=10922 u=root n=ansible | [WARNING]: A duplicate localhost-like entry was found (localhost). First found localhost was 127.0.0.1
+
+2024-11-15 02:18:27,053 p=10922 u=root n=ansible | PLAY [all] ****************************************************************************************************************************
+2024-11-15 02:18:27,058 p=10922 u=root n=ansible | TASK [Gathering Facts] ****************************************************************************************************************
+2024-11-15 02:18:27,249 p=10922 u=root n=ansible | fatal: [127.0.0.1]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '127.0.0.1' (ED25519) to the list of known hosts.\r\nroot@127.0.0.1: Permission denied (publickey).", "unreachable": true}
+2024-11-15 02:18:28,176 p=10922 u=root n=ansible | [WARNING]: Platform linux on host localhost is using the discovered Python interpreter at /usr/bin/python3.10, but future installation
+of another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.17/reference_appendices/interpreter_discovery.html for more information.
+
+2024-11-15 02:18:28,177 p=10922 u=root n=ansible | ok: [localhost]
+2024-11-15 02:18:28,183 p=10922 u=root n=ansible | TASK [include_role : 2do_parcial] *****************************************************************************************************
+2024-11-15 02:18:28,200 p=10922 u=root n=ansible | included: 2do_parcial for localhost
+2024-11-15 02:18:28,207 p=10922 u=root n=ansible | TASK [2do_parcial : debug] ************************************************************************************************************
+2024-11-15 02:18:28,218 p=10922 u=root n=ansible | fatal: [localhost]: FAILED! => {"msg": "The task includes an option with an undefined variable.. 'item' is undefined\n\nThe error appears to be in '/home/miceli/UTN-FRA_SO_Examenes/202406/ansible/roles/2do_parcial/tasks/main.yml': line 4, column 3, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n- debug:\n  ^ here\n"}
+2024-11-15 02:18:28,219 p=10922 u=root n=ansible | PLAY RECAP ****************************************************************************************************************************
+2024-11-15 02:18:28,221 p=10922 u=root n=ansible | 127.0.0.1                  : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2024-11-15 02:18:28,221 p=10922 u=root n=ansible | localhost                  : ok=2    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2024-11-15 02:22:56,144 p=11059 u=miceli n=ansible | [WARNING]: A duplicate localhost-like entry was found (localhost). First found localhost was 127.0.0.1
+
+2024-11-15 02:22:56,229 p=11059 u=miceli n=ansible | PLAY [all] ***********************************************************************************************************
+2024-11-15 02:22:56,235 p=11059 u=miceli n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2024-11-15 02:22:56,326 p=11059 u=miceli n=ansible | fatal: [127.0.0.1]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '127.0.0.1' (ED25519) to the list of known hosts.\r\nmiceli@127.0.0.1: Permission denied (publickey).", "unreachable": true}
+2024-11-15 02:22:57,217 p=11059 u=miceli n=ansible | [WARNING]: Platform linux on host localhost is using the discovered Python interpreter at /usr/bin/python3.10, but
+future installation of another Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-core/2.17/reference_appendices/interpreter_discovery.html for more information.
+
+2024-11-15 02:22:57,218 p=11059 u=miceli n=ansible | ok: [localhost]
+2024-11-15 02:22:57,223 p=11059 u=miceli n=ansible | TASK [include_role : 2do_parcial] ************************************************************************************
+2024-11-15 02:22:57,239 p=11059 u=miceli n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 2 (char 1)
+
+Syntax Error while loading YAML.
+  did not find expected <document start>. did not find expected <document start>
+  in "<unicode string>", line 4, column 1
+
+The error appears to be in '/home/miceli/UTN-FRA_SO_Examenes/202406/ansible/roles/2do_parcial/tasks/main.yml': line 4, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+- name: "Crear directorios en /tmp/2do_parcial/"
+^ here
+
+2024-11-15 02:27:00,730 p=11213 u=miceli n=ansible | [WARNING]: A duplicate localhost-like entry was found (localhost). First found localhost was 127.0.0.1
+
+2024-11-15 02:27:00,817 p=11213 u=miceli n=ansible | PLAY [all] ***********************************************************************************************************
+2024-11-15 02:27:00,822 p=11213 u=miceli n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2024-11-15 02:27:00,924 p=11213 u=miceli n=ansible | fatal: [127.0.0.1]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '127.0.0.1' (ED25519) to the list of known hosts.\r\nmiceli@127.0.0.1: Permission denied (publickey).", "unreachable": true}
+2024-11-15 02:27:01,816 p=11213 u=miceli n=ansible | [WARNING]: Platform linux on host localhost is using the discovered Python interpreter at /usr/bin/python3.10, but
+future installation of another Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-core/2.17/reference_appendices/interpreter_discovery.html for more information.
+
+2024-11-15 02:27:01,818 p=11213 u=miceli n=ansible | ok: [localhost]
+2024-11-15 02:27:01,823 p=11213 u=miceli n=ansible | TASK [include_role : 2do_parcial] ************************************************************************************
+2024-11-15 02:27:01,838 p=11213 u=miceli n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 2 (char 1)
+
+Syntax Error while loading YAML.
+  did not find expected key. while parsing a block mapping
+  in "<unicode string>", line 1, column 2
+did not find expected key
+  in "<unicode string>", line 4, column 3
+
+The error appears to be in '/home/miceli/UTN-FRA_SO_Examenes/202406/ansible/roles/2do_parcial/tasks/main.yml': line 4, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+  - name: "Crear directorios en /tmp/2do_parcial/"
+  ^ here
+
